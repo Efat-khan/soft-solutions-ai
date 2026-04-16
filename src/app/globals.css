@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #0A0A0B;
+  --color-slate-grey: #1E1E20;
+  --color-intelligence-blue: #007AFF;
+  --color-soft-lavender: #A29BFE;
+
+  --font-sans: "Inter", var(--font-geist-sans);
+  --font-mono: "JetBrains Mono", var(--font-geist-mono);
+}
+
+:root {
+  --background: #0A0A0B;
+  --foreground: #FFFFFF;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(30, 30, 32, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-deep {
+  background: rgba(10, 10, 11, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glow-blue {
+  box-shadow: 0 0 30px rgba(0, 122, 255, 0.25);
+}
+
+.glow-blue-subtle {
+  box-shadow: 0 0 15px rgba(0, 122, 255, 0.1);
+}
+
+.glow-lavender {
+  box-shadow: 0 0 30px rgba(162, 155, 254, 0.25);
+}
+
+.glow-white {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s infinite ease-in-out;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
