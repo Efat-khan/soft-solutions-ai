@@ -55,9 +55,9 @@ export default function Hero() {
           className="text-7xl md:text-9xl font-bold tracking-tighter mb-8 leading-[0.95] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/30"
         >
           Soft SolutionsAI: <br />
-          {h.headlineMain}{" "}
-          <span className="italic font-light text-white/40">{h.headlineMeets}</span>{" "}
-          {h.headlineSuffix}
+          Logic{" "}
+          <span className="italic font-light text-white/40">Meets</span>{" "}
+          Elegance
         </motion.h1>
 
         {/* Subtitle */}
