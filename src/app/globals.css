@@ -90,3 +90,104 @@ body {
 .animate-spin-slow {
   animation: spin-slow 12s linear infinite;
 }
+
+/* ===== BENGALI FONT ===== */
+:lang(bn), :lang(bn) * {
+  font-family: var(--font-bn), sans-serif;
+}
+
+/* ===== LIGHT MODE ===== */
+[data-theme="light"] {
+  --background: #F5F5F7;
+  --foreground: #000000;
+  --color-white: #000000; /* flips all text-white/* utilities to black-based */
+}
+
+/* ── Glass utilities ── */
+[data-theme="light"] .glass {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .glass-deep {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.07) !important;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .glass-pill {
+  background: rgba(0, 0, 0, 0.05) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.09) !important;
+}
+
+/* ── Glow adjustments ── */
+[data-theme="light"] .glow-blue        { box-shadow: 0 0 30px rgba(0, 122, 255, 0.20) !important; }
+[data-theme="light"] .glow-blue-subtle { box-shadow: 0 0 15px rgba(0, 122, 255, 0.12) !important; }
+[data-theme="light"] .glow-lavender    { box-shadow: 0 0 30px rgba(162, 155, 254, 0.20) !important; }
+[data-theme="light"] .glow-white       { box-shadow: 0 0 20px rgba(0, 0, 0, 0.08) !important; }
+
+/* ── TEXT: catch-all first, then specific overrides (later = higher precedence at equal specificity) ──
+   Uses [class*=] attribute selector which bypasses any Tailwind class-name escaping issues.
+   Opacity values are mapped UP so faint text stays readable on white background.           */
+
+[data-theme="light"] [class*="text-white"] {
+  color: rgba(0, 0, 0, 0.65) !important;   /* safe fallback for any variant */
+}
+
+/* Solid white → solid black */
+[data-theme="light"] [class~="text-white"] {
+  color: #000000 !important;
+}
+
+/* Opacity variants — values boosted so hierarchy is still visible but nothing is invisible */
+[data-theme="light"] [class~="text-white/80"]  { color: rgba(0, 0, 0, 0.90) !important; }
+[data-theme="light"] [class~="text-white/60"]  { color: rgba(0, 0, 0, 0.78) !important; }
+[data-theme="light"] [class~="text-white/50"]  { color: rgba(0, 0, 0, 0.72) !important; }
+[data-theme="light"] [class~="text-white/40"]  { color: rgba(0, 0, 0, 0.65) !important; }
+[data-theme="light"] [class~="text-white/35"]  { color: rgba(0, 0, 0, 0.60) !important; }
+[data-theme="light"] [class~="text-white/30"]  { color: rgba(0, 0, 0, 0.55) !important; }
+[data-theme="light"] [class~="text-white/25"]  { color: rgba(0, 0, 0, 0.50) !important; }
+[data-theme="light"] [class~="text-white/20"]  { color: rgba(0, 0, 0, 0.45) !important; }
+[data-theme="light"] [class~="text-white/15"]  { color: rgba(0, 0, 0, 0.40) !important; }
+[data-theme="light"] [class~="text-white/10"]  { color: rgba(0, 0, 0, 0.35) !important; }
+[data-theme="light"] [class~="text-white/5"]   { color: rgba(0, 0, 0, 0.30) !important; }
+
+/* ── BORDER: catch-all then specifics ── */
+[data-theme="light"] [class*="border-white"] {
+  border-color: rgba(0, 0, 0, 0.10) !important;
+}
+[data-theme="light"] [class~="border-white/5"]  { border-color: rgba(0, 0, 0, 0.07) !important; }
+[data-theme="light"] [class~="border-white/10"] { border-color: rgba(0, 0, 0, 0.10) !important; }
+[data-theme="light"] [class~="border-white/20"] { border-color: rgba(0, 0, 0, 0.13) !important; }
+[data-theme="light"] [class~="border-white/30"] { border-color: rgba(0, 0, 0, 0.16) !important; }
+
+/* ── BACKGROUND ── */
+[data-theme="light"] [class*="bg-white\/"] {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+[data-theme="light"] [class~="bg-white/10"] { background-color: rgba(0, 0, 0, 0.06) !important; }
+[data-theme="light"] [class~="bg-white/20"] { background-color: rgba(0, 0, 0, 0.09) !important; }
+
+/* Force obsidian bg sections to use light background */
+[data-theme="light"] .bg-obsidian { background-color: #F5F5F7 !important; }
+
+/* ── DARK MODE: enforce white text so light-mode overrides never bleed ── */
+:root:not([data-theme="light"]) [class~="text-white"]    { color: #ffffff !important; }
+:root:not([data-theme="light"]) [class~="text-white/80"] { color: rgba(255,255,255,0.80) !important; }
+:root:not([data-theme="light"]) [class~="text-white/60"] { color: rgba(255,255,255,0.60) !important; }
+:root:not([data-theme="light"]) [class~="text-white/50"] { color: rgba(255,255,255,0.50) !important; }
+:root:not([data-theme="light"]) [class~="text-white/40"] { color: rgba(255,255,255,0.40) !important; }
+:root:not([data-theme="light"]) [class~="text-white/35"] { color: rgba(255,255,255,0.35) !important; }
+:root:not([data-theme="light"]) [class~="text-white/30"] { color: rgba(255,255,255,0.30) !important; }
+:root:not([data-theme="light"]) [class~="text-white/25"] { color: rgba(255,255,255,0.25) !important; }
+:root:not([data-theme="light"]) [class~="text-white/20"] { color: rgba(255,255,255,0.20) !important; }
+:root:not([data-theme="light"]) [class~="text-white/15"] { color: rgba(255,255,255,0.15) !important; }
+:root:not([data-theme="light"]) [class~="text-white/10"] { color: rgba(255,255,255,0.10) !important; }
+:root:not([data-theme="light"]) [class~="text-white/5"]  { color: rgba(255,255,255,0.05) !important; }
