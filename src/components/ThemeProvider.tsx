@@ -19,11 +19,11 @@ export function useTheme() {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
     const stored = localStorage.getItem("theme") as Theme | null;
-    const resolved: Theme = stored === "dark" ? "dark" : "light";
+    const resolved: Theme = stored === "light" ? "light" : "dark";
     setTheme(resolved);
     document.documentElement.setAttribute("data-theme", resolved);
   }, []);
